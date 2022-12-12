@@ -1,0 +1,47 @@
+<section id="contact" class="section-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<div class="row contact-details">
+					<div class="col-sm-4 margin-bottom30
+					text-center">
+						<ion-icon class="con-icon" name="location-outline"></ion-icon>
+                        <h4>Guadalajara, Jalisco</h4>
+                    </div>
+                    <div class="col-sm-4 margin-bottom30 text-center">
+                        <ion-icon class="con-icon" name="mail-outline"></ion-icon>
+                        <h4>contacto@yaenvialo.com</h4>
+                    </div>
+                    <div class="col-sm-4 margin-bottom30 text-center">
+                        <ion-icon class="con-icon" name="call-outline"></ion-icon>
+                        <h4>999-390-0202</h4>
+                    </div>
+                </div><!--contact details-->
+            </div>
+        </div>						
+		
+		<form name="sentMessage" class="contact-form" method="post">
+			{% csrf_token %}
+			<h3>Envianos tus comentarios o preguntas</h3>
+			<div class="row">
+
+
+				{% for field in form %}
+				<div class="col-md-12">
+					<div class="row control-group">
+						<div class="form-group col-xs-12 controls">
+							{{ field }}
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			<br>
+            <div id="success"></div>
+            <div class="row">
+                <div class="form-group col-xs-12 text-right">
+                    <button type="submit" class="btn btn-white btn-lg">Enviar</button>
+                </div>
+			</div>
+		</form>
+	</div>
+</section>

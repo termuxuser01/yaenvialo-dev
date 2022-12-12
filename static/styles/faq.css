@@ -1,0 +1,76 @@
+#faq {
+	background-color: #03a9f4;
+	padding-bottom: 6rem;
+	text-align: center;
+	align-items: center;
+}
+
+.faq-box h1 {
+	padding-bottom: 1rem;
+	padding-top: 1rem;
+	color: #000;
+}
+
+.faq-container {
+	display: grid;
+	/*grid-template-columns: 50% 50%;*/
+	grid-gap: 10px;
+	width: 60%;
+	margin: 0 auto;
+	background-color: white;
+	/*padding: 3rem 3rem 3rem 0;*/
+	border-radius: 20px;
+	position: relative;
+	top: 35px;
+}
+
+.faq-collapsible {
+	background-color: white;
+	color: black;
+	cursor: pointer;
+	padding: 18px;
+	width: 100%;
+	border: none;
+	text-align: left;
+	outline: none;
+	font-size: 1.4rem;
+	border-bottom: 1px solid grey;
+}
+
+.active, .faq-collapsible:hover {
+	background-color: white;
+	color: black;
+	font-weight: 700;
+}
+
+.faq-collapsible:after {
+	content: '\02C5';
+	color: hsl(14, 88%, 65%);
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+}
+
+.active:after {
+	content: "\005E";
+	color: hsl(14, 88%, 65%);
+}
+
+.faq-content {
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	font-size: 1.3tem;
+	transition: max-height 0.2s ease-out;
+	text-align: left;
+}
+
+@media screen and (max-width:  849px) {
+	.faq-container {
+		width: 80%;
+		padding: 0 0 3rem 0;
+		position: relative;
+		top: 35px;
+		grid-gap: 0;
+	}
+}
