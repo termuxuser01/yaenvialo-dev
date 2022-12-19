@@ -16,8 +16,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '192.168.100.47',
-    '127.0.0.1'
-]
+    '127.0.0.1',
+    'yaenvialo.com',
+    'www.yaenvialo.com'
+].append(os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(","))
 
 
 # Application definition
