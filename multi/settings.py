@@ -1,4 +1,6 @@
 import os
+import sys
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -12,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", 'django-insecure-*unlxi8=mn1)v8fjr23^mts+!9yk!*cc8=3o%ugbztxhf#3os=')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '192.168.100.47',
@@ -71,12 +73,31 @@ WSGI_APPLICATION = 'multi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
+# Incorporating PostgreSQL config for digital ocean
+if(DEVELOPMENT_MODE is True):
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, "db.sqlite3")
     }
-}
+elif(len(sys.argv) > 0 and sys.argv[1] != 'collectstatic'):
+    if(os.getenv("DATABSE_URL", None) is None):
+        raise Exception("DATABSE_URL environment variable not defined.")
+
+    DATABASES = {
+        "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    }
+
+
+# Sqlite3 config for local development
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+#Development mode for database connections
+DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 
 # Password validation
