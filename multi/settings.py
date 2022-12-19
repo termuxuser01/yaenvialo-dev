@@ -75,9 +75,11 @@ WSGI_APPLICATION = 'multi.wsgi.application'
 
 # Incorporating PostgreSQL config for digital ocean
 if(DEVELOPMENT_MODE is True):
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, "db.sqlite3")
+    {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, "db.sqlite3")
+        }
     }
 elif(len(sys.argv) > 0 and sys.argv[1] != 'collectstatic'):
     if(os.getenv("DATABSE_URL", None) is None):
