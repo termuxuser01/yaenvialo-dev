@@ -21,7 +21,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'yaenvialo.com',
     'www.yaenvialo.com'
-]#.append(os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(","))
+].append(os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(","))
 
 
 # Application definition
